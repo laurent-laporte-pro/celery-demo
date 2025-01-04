@@ -42,7 +42,7 @@ Required tools:
 1. Start the Celery worker:
    ```sh
    celery -A celery-demo.app worker --loglevel=info
-   # or using the demo script:
+   # or using the celery-demo command:
    celery-demo
    ```
 
@@ -60,6 +60,27 @@ The task chain is defined in `src/celery_demo/tasks.py` and includes the followi
 - `subtask1` and `subtask2`: Subtasks executed in parallel.
 - `task3`: Third task of the chain, executed after the group of subtasks.
 - `task4`: Last task of the chain.
+
+The following diagram illustrates the task chain for the Celery Demo Project:
+
+```plantuml
+@startuml
+title Task Chain for Celery Demo Project
+
+start
+:task1;
+:task2;
+fork
+  :subtask1;
+fork again
+  :subtask2;
+end fork
+:task3;
+:task4;
+stop
+
+@enduml
+```
 
 ## Progress Tracking
 
