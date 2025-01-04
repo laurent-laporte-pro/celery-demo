@@ -63,24 +63,7 @@ The task chain is defined in `src/celery_demo/tasks.py` and includes the followi
 
 The following diagram illustrates the task chain for the Celery Demo Project:
 
-```plantuml
-@startuml
-title Task Chain for Celery Demo Project
-
-start
-:task1;
-:task2;
-fork
-  :subtask1;
-fork again
-  :subtask2;
-end fork
-:task3;
-:task4;
-stop
-
-@enduml
-```
+![Diagramm](docs/img/plantuml-diagramm.png)
 
 ## Progress Tracking
 
