@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "celery-demo"
+dynamic = ["version"]
+description = "Demonstration of Celery and progress bar"
+authors = [
+    { name = "Laurent LAPORTE", email = "laurent.laporte.pro@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "celery~=5.4.0",
+    "redis~=5.2.1",
+]
+
+[project.scripts]
+celery-demo = "celery_demo.__main__:main"
+
+[tool.hatch.version]
+path = "src/celery_demo/__about__.py"
+attr = "__version__"
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.12", "3.13"]
+
+[tool.hatch.metadata]
+sources = ["src"]
